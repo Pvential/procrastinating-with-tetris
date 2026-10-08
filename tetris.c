@@ -5,10 +5,6 @@
 #include <string.h>
 
 
-struct Shape{
-    char shape[] = {};
-};
-
 
 int findAddress(int x, int y){
     return (((y-1) * 32) + x);
@@ -43,15 +39,30 @@ int draw(int *ptrGrid, int x, int y, char c){
     return 0;
 }
 
+int choosePiece(list){
+    return 0;
+}
 
 
 int main() {
-    // ooo scary pointers!!!!
+    srand(time(NULL));
+    
+    const struct char Square[] = {{'#', '#'}, {'#', '#'}};
+    const struct char LongPiece[] = {{'#'}, {'#'}, {'#'}, {'#'}};
+    const struct char LPiece[] = {{'#', '#'}{' ', '#'}, {' ', '#'}};
+    const struct char SPiece[] = {{' ', '#'}, {'#', '#'}, {'#', ' '}};
+    const struct char ReverseLPiece[] = {{'#', '#'}{'#', ' '}, {'#', ' '}};
+    const struct char ReverseSPiece[] = {{'#', ' '}, {'#', '#'}, {' ', '#'}};
+    const struct char TPiece[] = {{' ', '#', ' '}, {'#', '#', '#'}};
+
+    const int pieces[] = {&Square, &LongPiece, &LPiece, &ReverseLPiece, SPiece, &ReverseSPiece, &TPiece};
+    
     int *ptr = malloc(1024 * sizeof(char*)); // make the grid
     resetGrid(ptr)
     int i = 0;
     while (1) {
         i+=1;
+        
         renderGraphicsInAscii(ptr);
         usleep(0.1 * (1000000));
     }
